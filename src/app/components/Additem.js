@@ -17,7 +17,14 @@ const Additem = () => {
   const handleDelete = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
-
+const handleEdit = () => {
+  const newValue=""
+  setItems((prevItems) =>
+    prevItems.map((item) =>
+ { ...item, value: newValue } 
+    )
+  );
+};
   const handleComplete = (id) => {
     const updatedItems = items.map((item) =>
       item.id === id ? { ...item, completed: !item.completed } : item
