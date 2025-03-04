@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Listitem = ({ item, handleDelete, handleEdit,handleComplete }) => {
+const Listitem = ({ item, handleDelete, handleEdit, handleComplete }) => {
   console.log("Items received in Listitem:", item);
 
   if (!Array.isArray(item)) {
@@ -12,7 +12,7 @@ const Listitem = ({ item, handleDelete, handleEdit,handleComplete }) => {
   return (
     <ul className="w-full max-w-md mx-auto space-y-3 mt-6">
       {item.map((todo) => {
-        if (!todo || typeof todo !== "object" || !todo.id || !todo.text || typeof todo.completed !== "boolean") {
+        if (!todo || typeof todo !== "object" || !todo.id || typeof todo.completed !== "boolean") {
           console.error("Invalid todo item:", todo);
           return null; 
         }
@@ -37,9 +37,14 @@ const Listitem = ({ item, handleDelete, handleEdit,handleComplete }) => {
             >
               Delete
             </button>
-                <button
-              onClick={() => handleEdit()}
-              className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-110"
+            <button
+              onClick={() => {
+                const newValue = prompt("Edit your task:", todo.text);
+                if (newValue) {
+                  handleEdit(todo.id, newValue);
+                }
+              }}
+              className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-110"
             >
               Edit
             </button>
