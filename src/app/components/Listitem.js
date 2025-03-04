@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Listitem = ({ item, handleDelete, handleComplete }) => {
+const Listitem = ({ item, handleDelete, handleEdit,handleComplete }) => {
   console.log("Items received in Listitem:", item);
 
   if (!Array.isArray(item)) {
@@ -36,6 +36,12 @@ const Listitem = ({ item, handleDelete, handleComplete }) => {
               className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-110"
             >
               Delete
+            </button>
+                <button
+              onClick={() => handleEdit()}
+              className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-110"
+            >
+              Edit
             </button>
           </li>
         );
