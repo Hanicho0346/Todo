@@ -59,6 +59,7 @@ Listitem.propTypes = {
     })
   ).isRequired,
   handleDelete: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
   handleComplete: PropTypes.func.isRequired,
 };
 
